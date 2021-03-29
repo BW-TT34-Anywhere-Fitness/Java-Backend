@@ -1,5 +1,4 @@
 {
-  "name": "Course",
   "fields": [
     {
       "fieldName": "name",
@@ -15,7 +14,7 @@
     },
     {
       "fieldName": "duration",
-      "fieldType": "String"
+      "fieldType": "Duration"
     },
     {
       "fieldName": "intensity",
@@ -26,7 +25,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "currentsize",
+      "fieldName": "attenndees",
       "fieldType": "Integer"
     },
     {
@@ -34,15 +33,19 @@
       "fieldType": "Integer"
     }
   ],
-  "relationships": [],
-  "entityTableName": "course",
-  "dto": "no",
-  "pagination": "no",
+  "relationships": [
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "course"
+    }
+  ],
   "service": "no",
-  "jpaMetamodelFiltering": false,
-  "fluentMethods": true,
   "readOnly": false,
-  "embedded": false,
-  "applications": ["myApp"],
-  "changelogDate": "20210329191530"
+  "pagination": "pagination",
+  "name": "Course",
+  "changelogDate": "20210329202705"
 }

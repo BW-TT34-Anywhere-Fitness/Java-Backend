@@ -2,8 +2,8 @@
   "groups": [
     {
       "name": "application",
-      "type": "com.myapp.config.ApplicationProperties",
-      "sourceType": "com.myapp.config.ApplicationProperties"
+      "type": "com.mycompany.myapp.config.ApplicationProperties",
+      "sourceType": "com.mycompany.myapp.config.ApplicationProperties"
     }
   ],
   "properties": [],
