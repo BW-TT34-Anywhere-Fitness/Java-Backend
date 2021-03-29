@@ -40,8 +40,12 @@
     "backend_port": "8080",
     "packaging": "jar"
   },
+  "dependencies": {
+    "generator-jhipster-swagger2markup": "^1.2.0",
+    "yeoman-environment": "^3.2.0"
+  },
   "devDependencies": {
-    "generator-jhipster": "7.0.0",
+    "generator-jhipster": "^7.0.0",
     "husky": "4.3.8",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
