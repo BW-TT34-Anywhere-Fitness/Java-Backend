@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="118b97e9-8f64-4ade-80e8-ce7457f02340" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Jhipster/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/sonar-project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/sonar-project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/docker/app.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/docker/app.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/docker/jhipster-control-center.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/docker/jhipster-control-center.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/docker/jib/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/docker/jib/entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/docker/monitoring.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/docker/monitoring.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/docker/postgresql.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/docker/postgresql.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/docker/sonar.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/docker/sonar.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/ApplicationWebXml.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/GeneratedByJHipster.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/U4BwbackendApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/aop/logging/LoggingAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/ApplicationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/AsyncConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/CacheConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/DatabaseConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/DateTimeFormatConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/JacksonConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/LiquibaseConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/LocaleConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/LoggingAspectConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/LoggingConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/WebConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/config/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/domain/AbstractAuditingEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/domain/Authority.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/domain/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/domain/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/domain/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/repository/AuthorityRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/repository/CourseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/repository/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/AuthoritiesConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/DomainUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/SecurityUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/SpringSecurityAuditorAware.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/UserNotActivatedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/jwt/JWTConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/jwt/JWTFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/jwt/TokenProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/security/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/EmailAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/InvalidPasswordException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/MailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/UsernameAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/dto/AdminUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/dto/PasswordChangeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/dto/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/mapper/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/service/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/AccountResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/PublicUserResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/UserJWTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/UserResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/BadRequestAlertException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/EmailAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/ErrorConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/ExceptionTranslator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/FieldErrorVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/InvalidPasswordException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/LoginAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/errors/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/vm/KeyAndPasswordVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/vm/LoginVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/vm/ManagedUserVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/java/backend/web/rest/vm/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/.h2.server.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/.h2.server.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/changelog/00000000000000_initial_schema.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/changelog/00000000000000_initial_schema.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/data/authority.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/data/authority.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/data/course.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/liquibase/master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/config/tls/keystore.p12" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/config/tls/keystore.p12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/ArchTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/IntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/config/NoOpMailConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/config/WebConfigurerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/config/WebConfigurerTestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/config/timezone/HibernateTimeZoneIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/repository/timezone/DateTimeWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/repository/timezone/DateTimeWrapperRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/security/DomainUserDetailsServiceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/security/SecurityUtilsUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/security/jwt/JWTFilterTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/security/jwt/TokenProviderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/service/MailServiceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/service/UserServiceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/service/mapper/UserMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/AccountResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/PublicUserResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/TestUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/UserJWTControllerIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/UserResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/WithUnauthenticatedMockUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/errors/ExceptionTranslatorIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/java/backend/web/rest/errors/ExceptionTranslatorTestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/resources/config/application-testcontainers.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/test/resources/config/application-testcontainers.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/test/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/test/resources/i18n/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/src/test/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Jhipster/src/test/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/.h2.server.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/ApplicationWebXml.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/GeneratedByJHipster.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/U4BwbackendApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/aop/logging/LoggingAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/ApplicationProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/AsyncConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/CacheConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/DatabaseConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/DateTimeFormatConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/JacksonConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/LiquibaseConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/LocaleConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/LoggingAspectConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/LoggingConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/config/WebConfigurer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/AbstractAuditingEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/AbstractAuditingEntity_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/Authority.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/Authority_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/Class_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/Course.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/Course_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/domain/User_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/repository/AuthorityRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/repository/CourseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/AuthoritiesConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/DomainUserDetailsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/SecurityUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/SpringSecurityAuditorAware.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/UserNotActivatedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/jwt/JWTConfigurer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/jwt/JWTFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/security/jwt/TokenProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/EmailAlreadyUsedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/InvalidPasswordException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/MailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/UsernameAlreadyUsedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/dto/AdminUserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/dto/PasswordChangeDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/dto/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/service/mapper/UserMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/AccountResource$AccountResourceException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/AccountResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/PublicUserResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/UserJWTController$JWTToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/UserJWTController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/UserResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/BadRequestAlertException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/EmailAlreadyUsedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/ErrorConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/ExceptionTranslator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/FieldErrorVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/InvalidPasswordException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/errors/LoginAlreadyUsedException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/vm/KeyAndPasswordVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/vm/LoginVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/backend/web/rest/vm/ManagedUserVM.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/banner.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/application-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/application-prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/application-tls.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/liquibase/changelog/00000000000000_initial_schema.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/liquibase/data/authority.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/liquibase/data/course.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/liquibase/data/user.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/liquibase/data/user_authority.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/liquibase/master.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/config/tls/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/i18n/messages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/templates/error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/templates/mail/activationEmail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/templates/mail/creationEmail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/classes/templates/mail/passwordResetEmail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/generated-sources/annotations/backend/domain/AbstractAuditingEntity_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/generated-sources/annotations/backend/domain/Authority_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/generated-sources/annotations/backend/domain/Course_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/generated-sources/annotations/backend/domain/User_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/generated-test-sources/test-annotations/backend/repository/timezone/DateTimeWrapper_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/ArchTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/IntegrationTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/config/NoOpMailConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/config/WebConfigurerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/config/WebConfigurerTestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/config/timezone/HibernateTimeZoneIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/repository/timezone/DateTimeWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/repository/timezone/DateTimeWrapperRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/repository/timezone/DateTimeWrapper_.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/security/DomainUserDetailsServiceIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/security/SecurityUtilsUnitTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/security/jwt/JWTFilterTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/security/jwt/TokenProviderTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/service/MailServiceIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/service/UserServiceIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/service/mapper/UserMapperTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/AccountResourceIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/PublicUserResourceIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/TestUtil$NumberMatcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/TestUtil$ZonedDateTimeMatcher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/TestUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/UserJWTControllerIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/UserResourceIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/WithUnauthenticatedMockUser$Factory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/WithUnauthenticatedMockUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/errors/ExceptionTranslatorIT.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/errors/ExceptionTranslatorTestController$TestDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/errors/ExceptionTranslatorTestController$TestResponseStatusException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/backend/web/rest/errors/ExceptionTranslatorTestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/config/application-testcontainers.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/config/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/i18n/messages_en.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/target/test-classes/templates/mail/testEmail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jhipster/u-4-bwbackend.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qRbKbmT8xrI3ovYAudeUeNz4iX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Jhipster" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="118b97e9-8f64-4ade-80e8-ce7457f02340" name="Default Changelist" comment="" />
+      <created>1617045288345</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617045288345</updated>
+      <workItem from="1617045290844" duration="35000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

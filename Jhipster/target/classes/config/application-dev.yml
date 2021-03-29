@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    backend: DEBUG
+    com.myapp: DEBUG
 
 spring:
   devtools:
@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:u4bwbackend;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: u4bwbackend
+    url: jdbc:h2:file:./target/h2db/db/myapp;DB_CLOSE_DELAY=-1
+    username: myApp
     password:
     hikari:
       poolName: Hikari
@@ -67,8 +67,8 @@ server:
 
 jhipster:
   cache: # Cache configuration
-    caffeine: # Caffeine configuration
-      time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache. This sets expireAfterWrite in Caffeine (https://github.com/ben-manes/caffeine/wiki/Eviction#time-based)
+    ehcache: # Ehcache configuration
+      time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
       max-entries: 100 # Number of objects in each cache entry
   # CORS is only enabled by default with the "dev" profile
   cors:
@@ -83,7 +83,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NmZkMjNhOTM5OTI0NWZjYzEzYTY4ZGMxZjViMzgyNjE0ZGI4OGQ0YThmMWM4M2U1NjFjMmRkYzRiYmMyM2Q1MGFlMGZhNGQzNzQxMTI2NDYyYWFkOTA3OTk2Y2ExMWQzYTk1MTMyZDliMzRjYTdkN2NlNjNjZDE1MTE1OTgzOTk=
+        base64-secret: OTMzOThjOGQ2MzNmMjkwMTBhODJiMDc0NWUzZTFmZjdjNjRiYWQ5MGUzZGIxMjMzMzE1ODYwNjY3YTY3OGQ0NDI4ZWQ5MTNmYWM1MGNhNTc4MzhlZmIxYmZkYzRkMTYwZWMyOTVmMzQwYTQ5ODljYzljNDEzMTc3NzQ5MzFkYjE=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

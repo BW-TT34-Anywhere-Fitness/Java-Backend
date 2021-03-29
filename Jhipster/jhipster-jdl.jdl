@@ -1,0 +1,30 @@
+
+application {
+  config {
+    baseName myApp,
+    applicationType monolith,
+    packageName com.myapp,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+  }
+  entities *
+}
+
+entity User {
+	username String,
+    password String,
+    onboarded Boolean,
+    accounttype String,
+}
+
+entity Course {
+	name String,
+	type String,
+    starttime LocalDate,
+    duration String,
+    intensity Integer,
+    location String,
+    currentsize Integer,
+    maxsize Integer,
+}
+

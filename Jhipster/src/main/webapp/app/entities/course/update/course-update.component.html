@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-course-heading" data-cy="CourseCreateUpdateHeading" jhiTranslate="myApp.course.home.createOrEditLabel">
+        Create or edit a Course
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.type" for="field_type">Type</label>
+          <input type="text" class="form-control" name="type" id="field_type" data-cy="type" formControlName="type" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.starttime" for="field_starttime">Starttime</label>
+          <div class="input-group">
+            <input
+              id="field_starttime"
+              data-cy="starttime"
+              type="text"
+              class="form-control"
+              name="starttime"
+              ngbDatepicker
+              #starttimeDp="ngbDatepicker"
+              formControlName="starttime"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="starttimeDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.duration" for="field_duration">Duration</label>
+          <input type="text" class="form-control" name="duration" id="field_duration" data-cy="duration" formControlName="duration" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.intensity" for="field_intensity">Intensity</label>
+          <input type="number" class="form-control" name="intensity" id="field_intensity" data-cy="intensity" formControlName="intensity" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.location" for="field_location">Location</label>
+          <input type="text" class="form-control" name="location" id="field_location" data-cy="location" formControlName="location" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.currentsize" for="field_currentsize">Currentsize</label>
+          <input
+            type="number"
+            class="form-control"
+            name="currentsize"
+            id="field_currentsize"
+            data-cy="currentsize"
+            formControlName="currentsize"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="myApp.course.maxsize" for="field_maxsize">Maxsize</label>
+          <input type="number" class="form-control" name="maxsize" id="field_maxsize" data-cy="maxsize" formControlName="maxsize" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

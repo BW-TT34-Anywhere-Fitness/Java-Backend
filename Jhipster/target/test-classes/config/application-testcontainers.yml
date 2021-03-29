@@ -12,8 +12,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
-    url: jdbc:tc:postgresql:13.2:///u4bwbackend?TC_TMPFS=/testtmpfs:rw
-    username: u4bwbackend
+    url: jdbc:tc:postgresql:13.2:///myApp?TC_TMPFS=/testtmpfs:rw
+    username: myApp
     password:
     hikari:
       poolName: Hikari

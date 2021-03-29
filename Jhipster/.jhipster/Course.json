@@ -1,0 +1,48 @@
+{
+  "name": "Course",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "starttime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "intensity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "currentsize",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "maxsize",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "course",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["myApp"],
+  "changelogDate": "20210329191530"
+}

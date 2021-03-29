@@ -2,8 +2,8 @@
   "groups": [
     {
       "name": "application",
-      "type": "backend.config.ApplicationProperties",
-      "sourceType": "backend.config.ApplicationProperties"
+      "type": "com.myapp.config.ApplicationProperties",
+      "sourceType": "com.myapp.config.ApplicationProperties"
     }
   ],
   "properties": [],
