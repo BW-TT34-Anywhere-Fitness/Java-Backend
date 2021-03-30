@@ -113,11 +113,37 @@ DELETE
 
 
 ---
-student/instructor obtaining their own courses:
+student/instructor obtaining their own courses (attending/teaching):
 
 GET
 
 http://xnor.space/api/account/courses
+
+---
+instructor getting courses that they attend:
+
+GET
+
+http://xnor.space/api/account/courses/attending
+
+
+---
+user modifying their account (except password) (this is subject to change)
+
+POST
+http://xnor.space/api/account/
+
+samplebody
+
+```
+{
+    "login: "user", (you have to supply anything in this field, but this request only change the logged in user I think.)
+    "lastName": "testname",
+    "fisrtName": "lorem",
+}
+
+```
+
 
 
 
