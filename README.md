@@ -1,5 +1,5 @@
 # JWT Token implementation - Jiawei
-##
+## >>> dev version: You must use localhost:3000 as your frontend origin for CORS<<<
 
 
 login:
