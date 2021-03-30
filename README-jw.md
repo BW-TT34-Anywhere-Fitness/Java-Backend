@@ -2,7 +2,7 @@
 ## >>> dev version: You must use localhost:3000 as your frontend origin for CORS<<<
 
 
-login:
+### login:
 
 POST
 http://xnor.space/api/authenticate
@@ -13,7 +13,7 @@ with format:
 
 ---
 
-all courses:
+### get all courses:
 GET
 http://xnor.space/api/courses
 
@@ -24,7 +24,7 @@ where `res` is the response of the login POST
 
 ---
 
-register:
+### register:
 POST
 http://xnor.space/api/register
 
@@ -34,7 +34,7 @@ other available fields: firstName, lastName, email
 
 ---
 
-userinfo:
+### User getting his own info:
 
 GET
 http://xnor.space/api/account
@@ -42,7 +42,7 @@ http://xnor.space/api/account
 
 ---
 
-instructor posting course:
+### instructor posting course:
 http://xnor.space/api/courses/
 
 POST
@@ -60,11 +60,12 @@ POST
 ```
 
 ---
-instructor course update endpoint:
+### instructor course update endpoint:
 http://xnor.space/api/courses/{id}
 
 ### Supports:
 
+1. Partially updating course
 PATCH
 
 body example:
@@ -73,7 +74,7 @@ body example:
   starttime: "2100-01-01T00:00:00"
 }
 
-instructor full overwrite at this endpoint:
+2.instructor full overwrite at this endpoint:
 
 PUT
 
@@ -91,36 +92,36 @@ body example:
 }
 ```
 
-instructor delete course with id at this endpoint:
+3. instructor delete course with id at this endpoint:
 
 DELETE
 
 
 ---
-student course CRUD endpoint: 
+### student course CRUD endpoint: 
 http://xnor.space/api/account/courses/{id}
 
 ### Supports:
 
-student add oneself to a course at this endpoint:
+1.student add oneself to a course at this endpoint:
 
 POST 
 
-student remove oneself to a course at this endpoint:
+2.student remove oneself to a course at this endpoint:
 
 DELETE
 
 
 
 ---
-student/instructor obtaining their own courses (attending/teaching):
+### student/instructor obtaining their own courses (attending/teaching):
 
 GET
 
 http://xnor.space/api/account/courses
 
 ---
-instructor getting courses that they attend:
+### instructor getting courses that they attend:
 
 GET
 
@@ -128,9 +129,10 @@ http://xnor.space/api/account/courses/attending
 
 
 ---
-user modifying their account (except password) (this is subject to change)
+### user modifying their account (except password) (this is subject to change)
 
 POST
+
 http://xnor.space/api/account/
 
 samplebody
@@ -148,7 +150,8 @@ samplebody
 
 
 
-# Java-Backend (Pat)
+
+
 
 
 
