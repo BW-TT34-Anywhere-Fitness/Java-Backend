@@ -1,0 +1,59 @@
+{
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "starttime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "intensity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "attenndees",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "maxsize",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipName": "user",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "course"
+    },
+    {
+      "relationshipName": "instructors",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "course"
+    }
+  ],
+  "service": "no",
+  "readOnly": false,
+  "pagination": "pagination",
+  "name": "Course",
+  "changelogDate": "20210329202705"
+}

@@ -1,0 +1,267 @@
+openapi: "3.0.3"
+info:
+  title: "my-app API"
+  description: "my-app API"
+  version: "1.0.0"
+servers:
+  - url: "https://my_app"
+paths:
+  /api/account:
+    get:
+      summary: "GET api/account"
+      operationId: "getAccount"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST api/account"
+      operationId: "saveAccount"
+      responses:
+        200:
+          description: "OK"
+  /api/account/change-password:
+    post:
+      summary: "POST api/account/change-password"
+      operationId: "changePassword"
+      responses:
+        200:
+          description: "OK"
+  /api/account/reset-password/finish:
+    post:
+      summary: "POST api/account/reset-password/finish"
+      operationId: "finishPasswordReset"
+      responses:
+        200:
+          description: "OK"
+  /api/account/reset-password/init:
+    post:
+      summary: "POST api/account/reset-password/init"
+      operationId: "requestPasswordReset"
+      responses:
+        200:
+          description: "OK"
+  /api/activate:
+    get:
+      summary: "GET api/activate"
+      operationId: "activateAccount"
+      parameters:
+        - name: "key"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "OK"
+  /api/admin/users:
+    get:
+      summary: "GET api/admin/users"
+      operationId: "getAllUsers"
+      responses:
+        200:
+          description: "OK"
+    put:
+      summary: "PUT api/admin/users"
+      operationId: "updateUser"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST api/admin/users"
+      operationId: "createUser"
+      responses:
+        200:
+          description: "OK"
+  /api/admin/users/{login}:
+    get:
+      summary: "GET api/admin/users/{login}"
+      operationId: "getUser"
+      parameters:
+        - name: "login"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "OK"
+    delete:
+      summary: "DELETE api/admin/users/{login}"
+      operationId: "deleteUser"
+      parameters:
+        - name: "login"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "OK"
+  /api/authenticate:
+    get:
+      summary: "GET api/authenticate"
+      operationId: "isAuthenticated"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST api/authenticate"
+      operationId: "authorize"
+      responses:
+        200:
+          description: "OK"
+  /api/authorities:
+    get:
+      summary: "GET api/authorities"
+      operationId: "getAuthorities"
+      responses:
+        200:
+          description: "OK"
+  /api/courses:
+    get:
+      summary: "GET api/courses"
+      operationId: "getAllCourses"
+      parameters:
+        - name: "eagerload"
+          in: "query"
+          required: true
+          schema:
+            type: "boolean"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST api/courses"
+      operationId: "createCourse"
+      responses:
+        200:
+          description: "OK"
+  /api/courses/{id}:
+    get:
+      summary: "GET api/courses/{id}"
+      operationId: "getCourse"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+    put:
+      summary: "PUT api/courses/{id}"
+      operationId: "updateCourse"
+      parameters:
+        - name: "id"
+          in: "path"
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+    patch:
+      summary: "PATCH api/courses/{id}"
+      operationId: "partialUpdateCourse"
+      parameters:
+        - name: "id"
+          in: "path"
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+    delete:
+      summary: "DELETE api/courses/{id}"
+      operationId: "deleteCourse"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+  /api/register:
+    post:
+      summary: "POST api/register"
+      operationId: "registerAccount"
+      responses:
+        200:
+          description: "OK"
+  /api/userextras:
+    get:
+      summary: "GET api/userextras"
+      operationId: "getAllUserextras"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST api/userextras"
+      operationId: "createUserextra"
+      responses:
+        200:
+          description: "OK"
+  /api/userextras/{id}:
+    get:
+      summary: "GET api/userextras/{id}"
+      operationId: "getUserextra"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+    put:
+      summary: "PUT api/userextras/{id}"
+      operationId: "updateUserextra"
+      parameters:
+        - name: "id"
+          in: "path"
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+    patch:
+      summary: "PATCH api/userextras/{id}"
+      operationId: "partialUpdateUserextra"
+      parameters:
+        - name: "id"
+          in: "path"
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+    delete:
+      summary: "DELETE api/userextras/{id}"
+      operationId: "deleteUserextra"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+  /api/users:
+    get:
+      summary: "GET api/users"
+      operationId: "getAllPublicUsers"
+      responses:
+        200:
+          description: "OK"
