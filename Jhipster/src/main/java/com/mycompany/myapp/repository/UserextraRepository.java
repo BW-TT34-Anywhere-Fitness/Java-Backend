@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface UserextraRepository extends JpaRepository<Userextra, Long> {
-    Optional<Userextra> findOneByUser(User user);
+    Optional<User> findOneByUser(User user);
 }

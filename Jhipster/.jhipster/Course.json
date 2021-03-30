@@ -41,6 +41,14 @@
       "otherEntityField": "login",
       "ownerSide": true,
       "otherEntityRelationshipName": "course"
+    },
+    {
+      "relationshipName": "instructors",
+      "otherEntityName": "user",
+      "relationshipType": "many-to-many",
+      "otherEntityField": "login",
+      "ownerSide": true,
+      "otherEntityRelationshipName": "course"
     }
   ],
   "service": "no",

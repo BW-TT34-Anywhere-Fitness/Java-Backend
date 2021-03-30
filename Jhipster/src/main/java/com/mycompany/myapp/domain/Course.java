@@ -53,6 +53,15 @@ public class Course implements Serializable {
     @JoinTable(name = "rel_course__user", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JoinTable(
+        name = "rel_course__instructors",
+        joinColumns = @JoinColumn(name = "course_id"),
+        inverseJoinColumns = @JoinColumn(name = "instructors_id")
+    )
+    private Set<User> instructors = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -192,6 +201,29 @@ public class Course implements Serializable {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Set<User> getInstructors() {
+        return this.instructors;
+    }
+
+    public Course instructors(Set<User> users) {
+        this.setInstructors(users);
+        return this;
+    }
+
+    public Course addInstructors(User user) {
+        this.instructors.add(user);
+        return this;
+    }
+
+    public Course removeInstructors(User user) {
+        this.instructors.remove(user);
+        return this;
+    }
+
+    public void setInstructors(Set<User> users) {
+        this.instructors = users;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

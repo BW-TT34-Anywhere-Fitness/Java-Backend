@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Course;
 import com.mycompany.myapp.repository.CourseRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -29,17 +30,16 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link com.mycompany.myapp.domain.Course}.
  */
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/api")
 @Transactional
 public class CourseResource {
 
-    @Autowired
-    UserService userService;
-
     private final Logger log = LoggerFactory.getLogger(CourseResource.class);
 
     private static final String ENTITY_NAME = "course";
+
+    @Autowired
+    UserService userService;
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
@@ -63,8 +63,7 @@ public class CourseResource {
         if (course.getId() != null) {
             throw new BadRequestAlertException("A new course cannot already have an ID", ENTITY_NAME, "idexists");
         }
-
-        course.getUsers().add(userService.getUserWithAuthorities().get());
+        course.getInstructors().add(userService.getUserWithAuthorities().get());
         Course result = courseRepository.save(course);
         return ResponseEntity
             .created(new URI("/api/courses/" + result.getId()))

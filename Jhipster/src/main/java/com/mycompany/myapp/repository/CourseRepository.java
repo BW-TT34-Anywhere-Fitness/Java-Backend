@@ -15,14 +15,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
     @Query(
-        value = "select distinct course from Course course left join fetch course.users",
+        value = "select distinct course from Course course left join fetch course.users left join fetch course.instructors",
         countQuery = "select count(distinct course) from Course course"
     )
     Page<Course> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct course from Course course left join fetch course.users")
+    @Query("select distinct course from Course course left join fetch course.users left join fetch course.instructors")
     List<Course> findAllWithEagerRelationships();
 
-    @Query("select course from Course course left join fetch course.users where course.id =:id")
+    @Query("select course from Course course left join fetch course.users left join fetch course.instructors where course.id =:id")
     Optional<Course> findOneWithEagerRelationships(@Param("id") Long id);
 }
