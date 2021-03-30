@@ -2,12 +2,14 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.repository.UserextraRepository;
 import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.service.MailService;
 import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.service.dto.AdminUserDTO;
 import com.mycompany.myapp.service.dto.PasswordChangeDTO;
 import com.mycompany.myapp.service.dto.UserDTO;
+import com.mycompany.myapp.service.dto.UserextraDTO;
 import com.mycompany.myapp.web.rest.errors.*;
 import com.mycompany.myapp.web.rest.vm.KeyAndPasswordVM;
 import com.mycompany.myapp.web.rest.vm.ManagedUserVM;
@@ -17,6 +19,7 @@ import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +30,9 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 @RequestMapping("/api")
 public class AccountResource {
+
+    @Autowired
+    UserextraRepository userextraRepository;
 
     private static class AccountResourceException extends RuntimeException {
 
@@ -63,7 +69,7 @@ public class AccountResource {
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
-        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword());
+        User user = userService.registerUser(managedUserVM, managedUserVM.getPassword(), managedUserVM.getAccounttype());
         mailService.sendActivationEmail(user);
     }
 
@@ -100,10 +106,10 @@ public class AccountResource {
      * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be returned.
      */
     @GetMapping("/account")
-    public AdminUserDTO getAccount() {
-        return userService
-            .getUserWithAuthorities()
-            .map(AdminUserDTO::new)
+    public UserextraDTO getAccount() {
+        return userextraRepository
+            .findOneByUser(userService.getUserWithAuthorities().get())
+            .map(UserextraDTO::new)
             .orElseThrow(() -> new AccountResourceException("User could not be found"));
     }
 
