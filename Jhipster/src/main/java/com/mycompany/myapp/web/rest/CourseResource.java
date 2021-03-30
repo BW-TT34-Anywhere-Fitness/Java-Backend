@@ -8,9 +8,14 @@ import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +90,7 @@ public class CourseResource {
     /**
      * {@code PUT  /courses/:id} : Updates an existing course.
      *
-     * @param id the id of the course to save.
+     * @param id     the id of the course to save.
      * @param course the course to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated course,
      * or with status {@code 400 (Bad Request)} if the course is not valid,
@@ -125,7 +130,7 @@ public class CourseResource {
     /**
      * {@code PATCH  /courses/:id} : Partial updates given fields of an existing course, field will ignore if it is null
      *
-     * @param id the id of the course to save.
+     * @param id     the id of the course to save.
      * @param course the course to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated course,
      * or with status {@code 400 (Bad Request)} if the course is not valid,
@@ -201,7 +206,7 @@ public class CourseResource {
     /**
      * {@code GET  /courses} : get all the courses.
      *
-     * @param pageable the pagination information.
+     * @param pageable  the pagination information.
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of courses in body.
      */
@@ -232,6 +237,63 @@ public class CourseResource {
         log.debug("REST request to get Course : {}", id);
         Optional<Course> course = courseRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(course);
+    }
+
+    // name
+    // class type
+    // mindate
+    // maxdate
+    // mintime 09:00:00
+    // maxtime 15:00:00
+    // minduration
+    // maxduration
+    // maxintensity
+    // minintensity
+    // location
+
+    @GetMapping("/courses/search")
+    public ResponseEntity<?> searchCourse(
+        @RequestParam(value = "mnt", required = false) String mnt,
+        @RequestParam(value = "mxt", required = false) String mxt,
+        @RequestParam(value = "mnd", required = false) String mnd,
+        @RequestParam(value = "mxd", required = false) String mxd,
+        @RequestParam(value = "mndr", required = false) String mndr,
+        @RequestParam(value = "mxdr", required = false) String mxdr,
+        @RequestParam(value = "mni", required = false) Integer mni,
+        @RequestParam(value = "mxi", required = false) Integer mxi,
+        @RequestParam(value = "type", required = false) String type,
+        @RequestParam(value = "name", required = false) String name,
+        @RequestParam(value = "loc", required = false) String loc
+    ) {
+        var all = courseRepository.findAll();
+
+        System.out.println(mnt);
+        System.out.println(mxt);
+        System.out.println(mnd);
+        System.out.println(mxd);
+        //        all.stream().forEach(i -> System.out.println(i.getStarttime().toLocalTime()));
+        var res = all
+            .stream()
+            .filter(
+                i ->
+                    (mnd == null || i.getStarttime().toLocalDate().isAfter(LocalDate.parse(mnd).minusDays(1))) &&
+                    (mxd == null || i.getStarttime().toLocalDate().isBefore(LocalDate.parse(mxd).plusDays(1))) &&
+                    (mnt == null || i.getStarttime().toLocalTime().isAfter(LocalTime.parse(mnt).minusSeconds(1))) &&
+                    (mxt == null || i.getStarttime().toLocalTime().isBefore(LocalTime.parse(mxt).plusSeconds(1))) &&
+                    (mndr == null || i.getDuration().getSeconds() >= Duration.parse(mndr).getSeconds()) &&
+                    (mxdr == null || i.getDuration().getSeconds() <= Duration.parse(mxdr).getSeconds()) &&
+                    (mni == null || i.getIntensity() >= mni) &&
+                    (mxi == null || i.getIntensity() <= mxi) &&
+                    //                (type == null || i.getType().matches("(?i).*"+type.trim()+".*")) &&
+
+                    //                (name == null || i.getName().matches("(?i).*"+name.trim()+".*")) &&
+                    //                (loc == null || i.getLocation().matches("(?i).*"+loc.trim()+".*"))
+                    (type == null || i.getType().toLowerCase(Locale.ROOT).contains(type.trim().toLowerCase(Locale.ROOT))) &&
+                    (name == null || i.getName().toLowerCase(Locale.ROOT).contains(name.trim().toLowerCase(Locale.ROOT))) &&
+                    (loc == null || i.getLocation().toLowerCase(Locale.ROOT).contains(loc.trim().toLowerCase(Locale.ROOT)))
+            )
+            .collect(Collectors.toList());
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     /**
