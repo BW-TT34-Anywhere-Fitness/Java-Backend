@@ -15,6 +15,7 @@ import com.mycompany.myapp.web.rest.vm.KeyAndPasswordVM;
 import com.mycompany.myapp.web.rest.vm.ManagedUserVM;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -108,7 +109,7 @@ public class AccountResource {
     @GetMapping("/account")
     public UserextraDTO getAccount() {
         return userextraRepository
-            .findOneByUser(userService.getUserWithAuthorities().get())
+            .findOneById(userService.getUserWithAuthorities().orElseThrow().getId())
             .map(UserextraDTO::new)
             .orElseThrow(() -> new AccountResourceException("User could not be found"));
     }
