@@ -74,7 +74,7 @@ body example:
   starttime: "2100-01-01T00:00:00"
 }
 
-2.instructor full overwrite at this endpoint:
+2. instructor full overwrite at this endpoint:
 
 PUT
 
@@ -103,11 +103,11 @@ http://xnor.space/api/account/courses/{id}
 
 #### Supports:
 
-1.student add oneself to a course at this endpoint:
+1. student add oneself to a course at this endpoint:
 
 POST 
 
-2.student remove oneself to a course at this endpoint:
+2. student remove oneself to a course at this endpoint:
 
 DELETE
 
@@ -147,6 +147,34 @@ samplebody
 ```
 
 
+
+### Search
+GET
+http://xnor.space/api/courses/search?field=term&..
+
+
+- all min max are containing (i.e. mindate = 2021-04-01 will return results containing courses that start on April first)
+- type, name, location are all partial matches (i.e. whether the string contains the search query term)
+- you can leave any of the search term out
+- therefore GET http://xnor.space/api/courses/search = GET http://xnor.space/api/courses/
+
+
+1. mnt = minimum time
+1. mxt = maximum time
+1. mnd = minimum date
+1. mxd = maximum date
+1. mndr = min duration
+1. mxdr = max duration
+1. mni = min intensity
+1. mxi = max intensity
+1. type = type
+1. name = name
+1. loc = location
+
+
+sample search url:
+
+http://xnor.space/api/courses/search?mnt=00:00:00&mxt=23:59:59&mnd=1970-01-01&mxd=2100-12-31&mndr=PT0.000S&mxdr=PT24H&mni=0&mxi=10000&type=lorem&name=ipsum&loc=mars
 
 
 
