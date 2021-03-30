@@ -212,7 +212,7 @@ public class AccountResource {
             .getUserWithAuthorities()
             .orElseThrow(() -> new AccountResourceException("No user was found for this reset key"));
         var usertype = userextraRepository.findOneById(currentUser.getId()).orElseThrow().getAccountype();
-        if (usertype == "instructor") {
+        if (usertype.equals("instructor")) {
             var res = courseRepository.findAllCoursesByInstructorID(currentUser.getId()).orElseThrow();
             return new ResponseEntity<>(res, HttpStatus.OK);
         }
@@ -236,6 +236,30 @@ public class AccountResource {
         var x = courseRepository.save(targetcourse);
 
         return new ResponseEntity<>(x, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/account/courses/{id}")
+    public ResponseEntity<?> removeSelfFromCourse(@PathVariable long id) {
+        var targetcourse = courseRepository.findById(id).orElseThrow();
+        var currentUser = userService.getUserWithAuthorities().orElseThrow();
+
+        targetcourse.getUsers().remove(currentUser);
+
+        var x = courseRepository.save(targetcourse);
+
+        return new ResponseEntity<>(x, HttpStatus.OK);
+    }
+
+    //  for instructors that wants to view the course that they attend
+    @GetMapping("/account/courses/attending")
+    public ResponseEntity<?> getMyAttendingCourses() {
+        var currentUser = userService
+            .getUserWithAuthorities()
+            .orElseThrow(() -> new AccountResourceException("No user was found for this reset key"));
+        var usertype = userextraRepository.findOneById(currentUser.getId()).orElseThrow().getAccountype();
+
+        var res = courseRepository.findAllCoursesByUserID(currentUser.getId()).orElseThrow();
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     private static boolean isPasswordLengthInvalid(String password) {

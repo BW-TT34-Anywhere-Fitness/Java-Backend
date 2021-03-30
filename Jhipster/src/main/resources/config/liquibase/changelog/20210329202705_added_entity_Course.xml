@@ -20,9 +20,6 @@
             <column name="type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="starttime" type="date">
-                <constraints nullable="true" />
-            </column>
             <column name="duration" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -38,8 +35,15 @@
             <column name="maxsize" type="integer">
                 <constraints nullable="true" />
             </column>
+            <column name="starttime" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="instructor_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="course" columnName="starttime" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <changeSet id="20210329202705-1-relations" author="jhipster">
@@ -54,17 +58,6 @@
         </createTable>
 
         <addPrimaryKey columnNames="course_id, user_id" tableName="rel_course__user"/>
-
-        <createTable tableName="rel_course__instructors">
-            <column name="instructors_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="course_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="course_id, instructors_id" tableName="rel_course__instructors"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -85,12 +78,12 @@
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
             <column name="type" type="string"/>
-            <column name="starttime" type="date"/>
             <column name="duration" type="numeric"/>
             <column name="intensity" type="numeric"/>
             <column name="location" type="string"/>
             <column name="attenndees" type="numeric"/>
             <column name="maxsize" type="numeric"/>
+            <column name="starttime" type="${datetimeType}"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

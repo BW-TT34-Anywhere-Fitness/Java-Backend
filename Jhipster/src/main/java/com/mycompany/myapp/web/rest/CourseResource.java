@@ -69,11 +69,12 @@ public class CourseResource {
         }
 
         var currentuser = userService.getUserWithAuthorities().orElseThrow();
-        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+
+        if (!userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype().equals("instructor")) {
             throw new BadRequestAlertException("Only instructor can add a course", ENTITY_NAME, "notinstructor");
         }
 
-        course.getInstructors().add(userService.getUserWithAuthorities().get());
+        course.setInstructor(userService.getUserWithAuthorities().get());
         Course result = courseRepository.save(course);
         return ResponseEntity
             .created(new URI("/api/courses/" + result.getId()))
@@ -107,8 +108,11 @@ public class CourseResource {
         }
 
         var currentuser = userService.getUserWithAuthorities().orElseThrow();
-        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+        if (!userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype().equals("instructor")) {
             throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
+        }
+        if (!course.getInstructor().getId().equals(currentuser.getId())) {
+            throw new BadRequestAlertException("Only owner can edit this course", ENTITY_NAME, "notowner");
         }
 
         Course result = courseRepository.save(course);
@@ -147,8 +151,11 @@ public class CourseResource {
         }
 
         var currentuser = userService.getUserWithAuthorities().orElseThrow();
-        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+        if (!userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype().equals("instructor")) {
             throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
+        }
+        if (!course.getInstructor().getId().equals(currentuser.getId())) {
+            throw new BadRequestAlertException("Only owner can edit this course", ENTITY_NAME, "notowner");
         }
 
         Optional<Course> result = courseRepository
@@ -237,9 +244,13 @@ public class CourseResource {
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
         log.debug("REST request to delete Course : {}", id);
         var currentuser = userService.getUserWithAuthorities().orElseThrow();
-        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+        if (!userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype().equals("instructor")) {
             throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
         }
+        if (!courseRepository.findById(id).orElseThrow().getInstructor().getId().equals(currentuser.getId())) {
+            throw new BadRequestAlertException("Only owner can delete this course", ENTITY_NAME, "notowner");
+        }
+
         courseRepository.deleteById(id);
         return ResponseEntity
             .noContent()

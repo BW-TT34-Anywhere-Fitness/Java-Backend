@@ -1,5 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
+import static com.mycompany.myapp.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Mockito.*;
@@ -10,8 +11,10 @@ import com.mycompany.myapp.IntegrationTest;
 import com.mycompany.myapp.domain.Course;
 import com.mycompany.myapp.repository.CourseRepository;
 import java.time.Duration;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -46,9 +49,6 @@ class CourseResourceIT {
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_STARTTIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_STARTTIME = LocalDate.now(ZoneId.systemDefault());
-
     private static final Duration DEFAULT_DURATION = Duration.ofHours(6);
     private static final Duration UPDATED_DURATION = Duration.ofHours(12);
 
@@ -63,6 +63,9 @@ class CourseResourceIT {
 
     private static final Integer DEFAULT_MAXSIZE = 1;
     private static final Integer UPDATED_MAXSIZE = 2;
+
+    private static final ZonedDateTime DEFAULT_STARTTIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_STARTTIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final String ENTITY_API_URL = "/api/courses";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -94,12 +97,12 @@ class CourseResourceIT {
         Course course = new Course()
             .name(DEFAULT_NAME)
             .type(DEFAULT_TYPE)
-            .starttime(DEFAULT_STARTTIME)
             .duration(DEFAULT_DURATION)
             .intensity(DEFAULT_INTENSITY)
             .location(DEFAULT_LOCATION)
             .attenndees(DEFAULT_ATTENNDEES)
-            .maxsize(DEFAULT_MAXSIZE);
+            .maxsize(DEFAULT_MAXSIZE)
+            .starttime(DEFAULT_STARTTIME);
         return course;
     }
 
@@ -113,12 +116,12 @@ class CourseResourceIT {
         Course course = new Course()
             .name(UPDATED_NAME)
             .type(UPDATED_TYPE)
-            .starttime(UPDATED_STARTTIME)
             .duration(UPDATED_DURATION)
             .intensity(UPDATED_INTENSITY)
             .location(UPDATED_LOCATION)
             .attenndees(UPDATED_ATTENNDEES)
-            .maxsize(UPDATED_MAXSIZE);
+            .maxsize(UPDATED_MAXSIZE)
+            .starttime(UPDATED_STARTTIME);
         return course;
     }
 
@@ -142,12 +145,12 @@ class CourseResourceIT {
         Course testCourse = courseList.get(courseList.size() - 1);
         assertThat(testCourse.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCourse.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testCourse.getStarttime()).isEqualTo(DEFAULT_STARTTIME);
         assertThat(testCourse.getDuration()).isEqualTo(DEFAULT_DURATION);
         assertThat(testCourse.getIntensity()).isEqualTo(DEFAULT_INTENSITY);
         assertThat(testCourse.getLocation()).isEqualTo(DEFAULT_LOCATION);
         assertThat(testCourse.getAttenndees()).isEqualTo(DEFAULT_ATTENNDEES);
         assertThat(testCourse.getMaxsize()).isEqualTo(DEFAULT_MAXSIZE);
+        assertThat(testCourse.getStarttime()).isEqualTo(DEFAULT_STARTTIME);
     }
 
     @Test
@@ -182,12 +185,12 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(course.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE)))
-            .andExpect(jsonPath("$.[*].starttime").value(hasItem(DEFAULT_STARTTIME.toString())))
             .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION.toString())))
             .andExpect(jsonPath("$.[*].intensity").value(hasItem(DEFAULT_INTENSITY)))
             .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
             .andExpect(jsonPath("$.[*].attenndees").value(hasItem(DEFAULT_ATTENNDEES)))
-            .andExpect(jsonPath("$.[*].maxsize").value(hasItem(DEFAULT_MAXSIZE)));
+            .andExpect(jsonPath("$.[*].maxsize").value(hasItem(DEFAULT_MAXSIZE)))
+            .andExpect(jsonPath("$.[*].starttime").value(hasItem(sameInstant(DEFAULT_STARTTIME))));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -222,12 +225,12 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.id").value(course.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE))
-            .andExpect(jsonPath("$.starttime").value(DEFAULT_STARTTIME.toString()))
             .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION.toString()))
             .andExpect(jsonPath("$.intensity").value(DEFAULT_INTENSITY))
             .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
             .andExpect(jsonPath("$.attenndees").value(DEFAULT_ATTENNDEES))
-            .andExpect(jsonPath("$.maxsize").value(DEFAULT_MAXSIZE));
+            .andExpect(jsonPath("$.maxsize").value(DEFAULT_MAXSIZE))
+            .andExpect(jsonPath("$.starttime").value(sameInstant(DEFAULT_STARTTIME)));
     }
 
     @Test
@@ -252,12 +255,12 @@ class CourseResourceIT {
         updatedCourse
             .name(UPDATED_NAME)
             .type(UPDATED_TYPE)
-            .starttime(UPDATED_STARTTIME)
             .duration(UPDATED_DURATION)
             .intensity(UPDATED_INTENSITY)
             .location(UPDATED_LOCATION)
             .attenndees(UPDATED_ATTENNDEES)
-            .maxsize(UPDATED_MAXSIZE);
+            .maxsize(UPDATED_MAXSIZE)
+            .starttime(UPDATED_STARTTIME);
 
         restCourseMockMvc
             .perform(
@@ -273,12 +276,12 @@ class CourseResourceIT {
         Course testCourse = courseList.get(courseList.size() - 1);
         assertThat(testCourse.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCourse.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testCourse.getStarttime()).isEqualTo(UPDATED_STARTTIME);
         assertThat(testCourse.getDuration()).isEqualTo(UPDATED_DURATION);
         assertThat(testCourse.getIntensity()).isEqualTo(UPDATED_INTENSITY);
         assertThat(testCourse.getLocation()).isEqualTo(UPDATED_LOCATION);
         assertThat(testCourse.getAttenndees()).isEqualTo(UPDATED_ATTENNDEES);
         assertThat(testCourse.getMaxsize()).isEqualTo(UPDATED_MAXSIZE);
+        assertThat(testCourse.getStarttime()).isEqualTo(UPDATED_STARTTIME);
     }
 
     @Test
@@ -352,10 +355,10 @@ class CourseResourceIT {
         partialUpdatedCourse
             .name(UPDATED_NAME)
             .type(UPDATED_TYPE)
-            .starttime(UPDATED_STARTTIME)
             .duration(UPDATED_DURATION)
             .intensity(UPDATED_INTENSITY)
-            .location(UPDATED_LOCATION);
+            .location(UPDATED_LOCATION)
+            .attenndees(UPDATED_ATTENNDEES);
 
         restCourseMockMvc
             .perform(
@@ -371,12 +374,12 @@ class CourseResourceIT {
         Course testCourse = courseList.get(courseList.size() - 1);
         assertThat(testCourse.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCourse.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testCourse.getStarttime()).isEqualTo(UPDATED_STARTTIME);
         assertThat(testCourse.getDuration()).isEqualTo(UPDATED_DURATION);
         assertThat(testCourse.getIntensity()).isEqualTo(UPDATED_INTENSITY);
         assertThat(testCourse.getLocation()).isEqualTo(UPDATED_LOCATION);
-        assertThat(testCourse.getAttenndees()).isEqualTo(DEFAULT_ATTENNDEES);
+        assertThat(testCourse.getAttenndees()).isEqualTo(UPDATED_ATTENNDEES);
         assertThat(testCourse.getMaxsize()).isEqualTo(DEFAULT_MAXSIZE);
+        assertThat(testCourse.getStarttime()).isEqualTo(DEFAULT_STARTTIME);
     }
 
     @Test
@@ -394,12 +397,12 @@ class CourseResourceIT {
         partialUpdatedCourse
             .name(UPDATED_NAME)
             .type(UPDATED_TYPE)
-            .starttime(UPDATED_STARTTIME)
             .duration(UPDATED_DURATION)
             .intensity(UPDATED_INTENSITY)
             .location(UPDATED_LOCATION)
             .attenndees(UPDATED_ATTENNDEES)
-            .maxsize(UPDATED_MAXSIZE);
+            .maxsize(UPDATED_MAXSIZE)
+            .starttime(UPDATED_STARTTIME);
 
         restCourseMockMvc
             .perform(
@@ -415,12 +418,12 @@ class CourseResourceIT {
         Course testCourse = courseList.get(courseList.size() - 1);
         assertThat(testCourse.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCourse.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testCourse.getStarttime()).isEqualTo(UPDATED_STARTTIME);
         assertThat(testCourse.getDuration()).isEqualTo(UPDATED_DURATION);
         assertThat(testCourse.getIntensity()).isEqualTo(UPDATED_INTENSITY);
         assertThat(testCourse.getLocation()).isEqualTo(UPDATED_LOCATION);
         assertThat(testCourse.getAttenndees()).isEqualTo(UPDATED_ATTENNDEES);
         assertThat(testCourse.getMaxsize()).isEqualTo(UPDATED_MAXSIZE);
+        assertThat(testCourse.getStarttime()).isEqualTo(UPDATED_STARTTIME);
     }
 
     @Test

@@ -9,10 +9,6 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "starttime",
-      "fieldType": "LocalDate"
-    },
-    {
       "fieldName": "duration",
       "fieldType": "Duration"
     },
@@ -31,6 +27,10 @@
     {
       "fieldName": "maxsize",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "starttime",
+      "fieldType": "ZonedDateTime"
     }
   ],
   "relationships": [
@@ -43,9 +43,9 @@
       "otherEntityRelationshipName": "course"
     },
     {
-      "relationshipName": "instructors",
+      "relationshipName": "instructor",
       "otherEntityName": "user",
-      "relationshipType": "many-to-many",
+      "relationshipType": "many-to-one",
       "otherEntityField": "login",
       "ownerSide": true,
       "otherEntityRelationshipName": "course"
