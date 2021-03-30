@@ -63,7 +63,7 @@ POST
 ### instructor course update endpoint:
 http://xnor.space/api/courses/{id}
 
-### Supports:
+#### Supports:
 
 1. Partially updating course
 PATCH
@@ -101,7 +101,7 @@ DELETE
 ### student course CRUD endpoint: 
 http://xnor.space/api/account/courses/{id}
 
-### Supports:
+#### Supports:
 
 1.student add oneself to a course at this endpoint:
 
