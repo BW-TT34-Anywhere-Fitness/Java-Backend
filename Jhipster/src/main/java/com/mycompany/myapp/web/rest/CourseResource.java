@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Course;
 import com.mycompany.myapp.repository.CourseRepository;
+import com.mycompany.myapp.repository.UserextraRepository;
 import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.service.UserService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
@@ -41,6 +42,9 @@ public class CourseResource {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserextraRepository userextraRepository;
+
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
@@ -63,6 +67,12 @@ public class CourseResource {
         if (course.getId() != null) {
             throw new BadRequestAlertException("A new course cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        var currentuser = userService.getUserWithAuthorities().orElseThrow();
+        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+            throw new BadRequestAlertException("Only instructor can add a course", ENTITY_NAME, "notinstructor");
+        }
+
         course.getInstructors().add(userService.getUserWithAuthorities().get());
         Course result = courseRepository.save(course);
         return ResponseEntity
@@ -94,6 +104,11 @@ public class CourseResource {
 
         if (!courseRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        var currentuser = userService.getUserWithAuthorities().orElseThrow();
+        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+            throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
         }
 
         Course result = courseRepository.save(course);
@@ -129,6 +144,11 @@ public class CourseResource {
 
         if (!courseRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        var currentuser = userService.getUserWithAuthorities().orElseThrow();
+        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+            throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
         }
 
         Optional<Course> result = courseRepository
@@ -216,6 +236,10 @@ public class CourseResource {
     @DeleteMapping("/courses/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
         log.debug("REST request to delete Course : {}", id);
+        var currentuser = userService.getUserWithAuthorities().orElseThrow();
+        if (userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype() != "instructor") {
+            throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
+        }
         courseRepository.deleteById(id);
         return ResponseEntity
             .noContent()

@@ -1,6 +1,7 @@
 package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.User;
+import com.mycompany.myapp.repository.CourseRepository;
 import com.mycompany.myapp.repository.UserRepository;
 import com.mycompany.myapp.repository.UserextraRepository;
 import com.mycompany.myapp.security.SecurityUtils;
@@ -22,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -34,6 +36,9 @@ public class AccountResource {
 
     @Autowired
     UserextraRepository userextraRepository;
+
+    @Autowired
+    CourseRepository courseRepository;
 
     private static class AccountResourceException extends RuntimeException {
 
@@ -191,6 +196,46 @@ public class AccountResource {
         if (!user.isPresent()) {
             throw new AccountResourceException("No user was found for this reset key");
         }
+    }
+
+    //anywherefitnessextralogics
+
+    /**
+     * {@code GET  /account/courses} : get the current user.
+     *
+     * @return the current user.
+     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be returned.
+     */
+    @GetMapping("/account/courses")
+    public ResponseEntity<?> getMyCourses() {
+        var currentUser = userService
+            .getUserWithAuthorities()
+            .orElseThrow(() -> new AccountResourceException("No user was found for this reset key"));
+        var usertype = userextraRepository.findOneById(currentUser.getId()).orElseThrow().getAccountype();
+        if (usertype == "instructor") {
+            var res = courseRepository.findAllCoursesByInstructorID(currentUser.getId()).orElseThrow();
+            return new ResponseEntity<>(res, HttpStatus.OK);
+        }
+
+        var res = courseRepository.findAllCoursesByUserID(currentUser.getId()).orElseThrow();
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    /**
+     * {@code post  /account/courses/{id}} : add the current user to course with id
+     *
+     * @return the course entity
+     */
+    @PostMapping("/account/courses/{id}")
+    public ResponseEntity<?> addUserToCourse(@PathVariable long id) {
+        var targetcourse = courseRepository.findById(id).orElseThrow();
+        var currentUser = userService.getUserWithAuthorities().orElseThrow();
+
+        targetcourse.getUsers().add(currentUser);
+
+        var x = courseRepository.save(targetcourse);
+
+        return new ResponseEntity<>(x, HttpStatus.OK);
     }
 
     private static boolean isPasswordLengthInvalid(String password) {

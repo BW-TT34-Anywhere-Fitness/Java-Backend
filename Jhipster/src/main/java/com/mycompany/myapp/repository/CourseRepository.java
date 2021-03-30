@@ -3,6 +3,8 @@ package com.mycompany.myapp.repository;
 import com.mycompany.myapp.domain.Course;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -19,6 +21,18 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
         countQuery = "select count(distinct course) from Course course"
     )
     Page<Course> findAllWithEagerRelationships(Pageable pageable);
+
+    @Query(
+        value = "select * from course where id in (select course_id from rel_course__user rcu where rcu.user_id=:id)",
+        nativeQuery = true
+    )
+    Optional<List<Course>> findAllCoursesByUserID(@Param("id") Long id);
+
+    @Query(
+        value = "select * from course where id in (select course_id from rel_course__instructor rci where rci.instructor_id=:id)",
+        nativeQuery = true
+    )
+    Optional<List<Course>> findAllCoursesByInstructorID(@Param("id") Long id);
 
     @Query("select distinct course from Course course left join fetch course.users left join fetch course.instructors")
     List<Course> findAllWithEagerRelationships();
