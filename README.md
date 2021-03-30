@@ -44,7 +44,9 @@ http://xnor.space/api/account
 
 instructor posting course:
 http://xnor.space/api/courses/
+
 POST
+```
 {
     "name": "lorem",
     "type": "ipsum",
@@ -55,6 +57,8 @@ POST
     "maxsize": 72720
 }
 
+```
+
 ---
 instructor course update endpoint:
 http://xnor.space/api/courses/{id}
@@ -62,14 +66,33 @@ http://xnor.space/api/courses/{id}
 ### Supports:
 
 PATCH
+
+body example:
+
 {
   starttime: "2100-01-01T00:00:00"
 }
 
 instructor full overwrite at this endpoint:
+
 PUT
 
+body example:
+
+```
+{
+    "name": "ipsum",
+    "type": "lorem",
+    "starttime": "3021-04-29T14:58:46", 
+    "duration": "PT200H", 
+    "intensity": 5,
+    "location": "ipsum",
+    "maxsize": 3
+}
+```
+
 instructor delete course with id at this endpoint:
+
 DELETE
 
 
@@ -80,16 +103,20 @@ http://xnor.space/api/account/courses/{id}
 ### Supports:
 
 student add oneself to a course at this endpoint:
+
 POST 
 
 student remove oneself to a course at this endpoint:
+
 DELETE
 
 
 
 ---
 student/instructor obtaining their own courses:
+
 GET
+
 http://xnor.space/api/account/courses
 
 
