@@ -13,4 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserextraRepository extends JpaRepository<Userextra, Long> {
     Optional<User> findOneByUser(User user);
+    Optional<Userextra> findOneById(Long id);
 }
