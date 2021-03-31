@@ -231,6 +231,10 @@ public class AccountResource {
         var targetcourse = courseRepository.findById(id).orElseThrow();
         var currentUser = userService.getUserWithAuthorities().orElseThrow();
 
+        if (targetcourse.getAttenndees() >= targetcourse.getMaxsize()) {
+            throw new BadRequestAlertException("Sorry this course is full", "course", "coursefull");
+        }
+
         targetcourse.getUsers().add(currentUser);
 
         var x = courseRepository.save(targetcourse);
