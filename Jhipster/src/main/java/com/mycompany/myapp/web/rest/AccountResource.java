@@ -14,6 +14,7 @@ import com.mycompany.myapp.service.dto.UserextraDTO;
 import com.mycompany.myapp.web.rest.errors.*;
 import com.mycompany.myapp.web.rest.vm.KeyAndPasswordVM;
 import com.mycompany.myapp.web.rest.vm.ManagedUserVM;
+import java.time.ZonedDateTime;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
@@ -233,6 +234,10 @@ public class AccountResource {
 
         if (targetcourse.getAttenndees() >= targetcourse.getMaxsize()) {
             throw new BadRequestAlertException("Sorry this course is full", "course", "coursefull");
+        }
+
+        if (targetcourse.getStarttime().isBefore(ZonedDateTime.now())) {
+            throw new BadRequestAlertException("You cannot register for a course in the past", "course", "coursefinished");
         }
 
         targetcourse.getUsers().add(currentUser);

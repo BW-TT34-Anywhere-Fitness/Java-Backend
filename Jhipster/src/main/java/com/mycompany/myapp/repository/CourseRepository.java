@@ -37,8 +37,8 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     @Query("select distinct course from Course course left join fetch course.users left join fetch course.instructor")
     List<Course> findAllWithEagerRelationships();
 
-    @Query("select course from Course course")
-    Optional<List<Course>> findCourseByType();
+    @Query("select distinct course.type from Course course")
+    Optional<List<String>> getAllTypes();
 
     @Query("select course from Course course left join fetch course.users left join fetch course.instructor where course.id =:id")
     Optional<Course> findOneWithEagerRelationships(@Param("id") Long id);
