@@ -129,19 +129,39 @@ http://xnor.space/api/account/courses/attending
 
 
 ---
-### user modifying their account (except password) (this is subject to change)
+### user modifying their account info
 
 POST
 
 http://xnor.space/api/account/
 
+
+login field is required, but you can supply anything there, since this request only modifies the logged in user, only, lastName fisrtName, email are modifiable.
+
 samplebody
 
 ```
 {
-    "login: "user", (you have to supply anything in this field, but this request only change the logged in user I think.)
+    "login: "anythinghere",
     "lastName": "testname",
     "fisrtName": "lorem",
+    "email": "new@email.com",
+}
+
+```
+
+### user modifying their own password
+
+POST
+
+http://xnor.space/api/account/change-password
+
+with body
+
+```
+{
+    "currentPassword" : "currentpass",
+    "newPassword": "newpass"
 }
 
 ```
@@ -159,22 +179,26 @@ http://xnor.space/api/courses/search?field=term&..
 - therefore GET http://xnor.space/api/courses/search = GET http://xnor.space/api/courses/
 
 
-1. mnt = minimum time
+1. mnt = minimum time, format below
 1. mxt = maximum time
-1. mnd = minimum date
+1. mnd = minimum date, format below
 1. mxd = maximum date
-1. mndr = min duration
+1. mndr = min duration, format below
 1. mxdr = max duration
-1. mni = min intensity
-1. mxi = max intensity
-1. type = type
-1. name = name
-1. loc = location
+1. mni = min intensity, 0-10 
+1. mxi = max intensity, 0-10
+1. type = type, string
+1. name = name, string
+1. loc = location, string
+1. mns = min class maxsize, integer
+1. mxs = max class maxsize, integer
+1. nf = 0 or 1 = whether the class is not full, use 1 to only show class that isn't full, etc.
+1. ins = instructor's username(login), this field is case insensitive exact matching (john would return instructor John, joHN, etc.)
 
 
 sample search url:
 
-http://xnor.space/api/courses/search?mnt=00:00:00&mxt=23:59:59&mnd=1970-01-01&mxd=2100-12-31&mndr=PT0.000S&mxdr=PT24H&mni=0&mxi=10000&type=lorem&name=ipsum&loc=mars
+http://xnor.space/api/courses/search?mnt=00:00:00&mxt=23:59:59&mnd=1970-01-01&mxd=2100-12-31&mndr=PT0.000S&mxdr=PT24H&mni=0&mxi=10000&type=lorem&name=ipsum&loc=mars&nf=1&ins=testinstructor
 
 
 
