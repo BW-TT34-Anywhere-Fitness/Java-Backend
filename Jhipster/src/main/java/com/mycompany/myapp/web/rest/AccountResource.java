@@ -76,6 +76,11 @@ public class AccountResource {
         if (isPasswordLengthInvalid(managedUserVM.getPassword())) {
             throw new InvalidPasswordException();
         }
+        String[] validtypes = { "student", "instructor" };
+        if (Arrays.stream(validtypes).noneMatch(i -> i.equalsIgnoreCase(managedUserVM.getAccounttype()))) {
+            throw new AccountResourceException("An illegal user type is supplied");
+        }
+
         User user = userService.registerUser(managedUserVM, managedUserVM.getPassword(), managedUserVM.getAccounttype());
         mailService.sendActivationEmail(user);
     }
