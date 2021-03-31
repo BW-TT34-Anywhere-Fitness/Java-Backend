@@ -77,9 +77,9 @@ POST
     "type": "ipsum",
     "starttime": "2021-04-29T14:58:46", (default unzoned,use 2021-03-29T00:00:00-05:00 for zoned)
     "duration": "PT86400S", (example: PT86400S for 1 day, PT1H43M20S for 1 hour 43 minutes 20 second)
-    "intensity": 9001, (integer)
+    "intensity": 10, (integer 0-10)
     "location": "lorem",
-    "maxsize": 72720
+    "maxsize": 20
 }
 
 ```
