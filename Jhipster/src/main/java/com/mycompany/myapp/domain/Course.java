@@ -1,17 +1,24 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mycompany.myapp.repository.CourseRepository;
 import java.io.Serializable;
 import java.time.Duration;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Formula;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Component;
 
 /**
  * A Course.
  */
+//@EntityListeners({CourseJpaCallbacksListener.class})
 @Entity
 @Table(name = "course")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -30,9 +37,6 @@ public class Course implements Serializable {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "starttime")
-    private LocalDate starttime;
-
     @Column(name = "duration")
     private Duration duration;
 
@@ -48,19 +52,18 @@ public class Course implements Serializable {
     @Column(name = "maxsize")
     private Integer maxsize;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "rel_course__user", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> users = new HashSet<>();
+    @Column(name = "starttime")
+    private ZonedDateTime starttime;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(
-        name = "rel_course__instructors",
-        joinColumns = @JoinColumn(name = "course_id"),
-        inverseJoinColumns = @JoinColumn(name = "instructors_id")
-    )
-    private Set<User> instructors = new HashSet<>();
+    @JsonIgnoreProperties(value = { "activated", "langKey", "imageUrl", "resetDate" }, allowSetters = true)
+    @JoinTable(name = "rel_course__user", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> users = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "activated", "langKey", "imageUrl", "resetDate" }, allowSetters = true)
+    private User instructor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -100,19 +103,6 @@ public class Course implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public LocalDate getStarttime() {
-        return this.starttime;
-    }
-
-    public Course starttime(LocalDate starttime) {
-        this.starttime = starttime;
-        return this;
-    }
-
-    public void setStarttime(LocalDate starttime) {
-        this.starttime = starttime;
     }
 
     public Duration getDuration() {
@@ -155,6 +145,7 @@ public class Course implements Serializable {
     }
 
     public Integer getAttenndees() {
+        setAttenndees(this.users.size());
         return this.attenndees;
     }
 
@@ -180,6 +171,19 @@ public class Course implements Serializable {
         this.maxsize = maxsize;
     }
 
+    public ZonedDateTime getStarttime() {
+        return this.starttime;
+    }
+
+    public Course starttime(ZonedDateTime starttime) {
+        this.starttime = starttime;
+        return this;
+    }
+
+    public void setStarttime(ZonedDateTime starttime) {
+        this.starttime = starttime;
+    }
+
     public Set<User> getUsers() {
         return this.users;
     }
@@ -203,27 +207,17 @@ public class Course implements Serializable {
         this.users = users;
     }
 
-    public Set<User> getInstructors() {
-        return this.instructors;
+    public User getInstructor() {
+        return this.instructor;
     }
 
-    public Course instructors(Set<User> users) {
-        this.setInstructors(users);
+    public Course instructor(User user) {
+        this.setInstructor(user);
         return this;
     }
 
-    public Course addInstructors(User user) {
-        this.instructors.add(user);
-        return this;
-    }
-
-    public Course removeInstructors(User user) {
-        this.instructors.remove(user);
-        return this;
-    }
-
-    public void setInstructors(Set<User> users) {
-        this.instructors = users;
+    public void setInstructor(User user) {
+        this.instructor = user;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -252,12 +246,23 @@ public class Course implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", type='" + getType() + "'" +
-            ", starttime='" + getStarttime() + "'" +
             ", duration='" + getDuration() + "'" +
             ", intensity=" + getIntensity() +
             ", location='" + getLocation() + "'" +
             ", attenndees=" + getAttenndees() +
             ", maxsize=" + getMaxsize() +
+            ", starttime='" + getStarttime() + "'" +
             "}";
     }
 }
+//@Component
+//class CourseJpaCallbacksListener {
+//    @Autowired
+//    private CourseRepository courseRepository;
+//
+//    @PreUpdate
+//    void preUpdate(Course course) {
+//        course.setAttenndees(courseRepository.getAttendeesNumByCourseID(course.getId()));
+//    }
+//
+//}
