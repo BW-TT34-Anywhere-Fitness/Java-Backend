@@ -267,10 +267,10 @@ public class CourseResource {
     ) {
         var all = courseRepository.findAll();
 
-        System.out.println(mnt);
-        System.out.println(mxt);
-        System.out.println(mnd);
-        System.out.println(mxd);
+        //        System.out.println(mnt);
+        //        System.out.println(mxt);
+        //        System.out.println(mnd);
+        //        System.out.println(mxd);
         //        all.stream().forEach(i -> System.out.println(i.getStarttime().toLocalTime()));
         var res = all
             .stream()
