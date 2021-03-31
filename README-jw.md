@@ -2,6 +2,21 @@
 ## >>> dev version: You must use localhost:3000 as your frontend origin for CORS<<<
 
 
+
+---
+
+### register:
+POST
+http://xnor.space/api/register
+
+with format
+```
+{login: "username", password: "password", accounttype: "student/instructor",  email: "test@email.com"}
+```
+the above 4 fields are required, other available fields you can supply: firstName, lastName
+
+---
+
 ### login:
 
 POST
@@ -11,6 +26,16 @@ with format:
 ```
 {username: "testuser", password: "testuser"}
 ```
+
+
+
+---
+### Supplying JWT token
+
+- After logged in, a jwt token for the logged in session would be returned
+- You can use localstorage to store it (or cookies and other methods if you wish)
+- Then you supply {headers: {Authorization: \`Bearer ${localStorage.id_token}\`}} in your requests
+- A request example is below
 
 ---
 
@@ -31,18 +56,6 @@ GET
 
 http://xnor.space/api/courses/categories or http://xnor.space/api/courses/types
 
-
----
-
-### register:
-POST
-http://xnor.space/api/register
-
-with format
-```
-{login: "username", password: "password", accounttype: "student/instructor"}
-```
-the above 3 fields are required, other available fields you can supply: firstName, lastName, email
 
 ---
 
