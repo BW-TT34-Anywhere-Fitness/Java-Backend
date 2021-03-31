@@ -8,8 +8,9 @@ POST
 http://xnor.space/api/authenticate
 
 with format:
-{username: "admin", password: "admin"}
-
+```
+{username: "testuser", password: "testuser"}
+```
 
 ---
 
@@ -38,8 +39,10 @@ POST
 http://xnor.space/api/register
 
 with format
+```
 {login: "username", password: "password", accounttype: "student/instructor"}
-other available fields: firstName, lastName, email
+```
+the above 3 fields are required, other available fields you can supply: firstName, lastName, email
 
 ---
 
