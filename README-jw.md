@@ -24,6 +24,15 @@ where `res` is the response of the login POST
 
 ---
 
+### get all course types:
+
+GET
+
+http://xnor.space/api/courses/categories or http://xnor.space/api/courses/types
+
+
+---
+
 ### register:
 POST
 http://xnor.space/api/register
