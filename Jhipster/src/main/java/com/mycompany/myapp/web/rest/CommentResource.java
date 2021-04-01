@@ -25,6 +25,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -119,6 +120,10 @@ public class CommentResource {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
+        if (commentRepository.findByAuthorIsCurrentUser().isEmpty()) {
+            throw new BadRequestAlertException("Only owner can edit this", ENTITY_NAME, "notowner");
+        }
+
         Comment result = commentRepository.save(comment);
         return ResponseEntity
             .ok()
@@ -148,6 +153,10 @@ public class CommentResource {
 
         if (!commentRepository.existsById(commentid)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        if (commentRepository.findByAuthorIsCurrentUser().isEmpty()) {
+            throw new BadRequestAlertException("Only owner can edit this", ENTITY_NAME, "notowner");
         }
 
         Optional<Comment> result = commentRepository
@@ -226,6 +235,9 @@ public class CommentResource {
     @DeleteMapping("/comments/{id}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long id) {
         log.debug("REST request to delete Comment : {}", id);
+        if (commentRepository.findByAuthorIsCurrentUser().isEmpty()) {
+            throw new BadRequestAlertException("Only owner can edit this", ENTITY_NAME, "notowner");
+        }
         commentRepository.deleteById(id);
         return ResponseEntity
             .noContent()
