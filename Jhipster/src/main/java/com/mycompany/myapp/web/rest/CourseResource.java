@@ -262,14 +262,14 @@ public class CourseResource {
         @RequestParam(value = "mxd", required = false) String mxd,
         @RequestParam(value = "mndr", required = false) String mndr,
         @RequestParam(value = "mxdr", required = false) String mxdr,
-        @RequestParam(value = "mni", required = false) Integer mni,
-        @RequestParam(value = "mxi", required = false) Integer mxi,
+        @RequestParam(value = "mni", required = false) String mni,
+        @RequestParam(value = "mxi", required = false) String mxi,
         @RequestParam(value = "type", required = false) String type,
         @RequestParam(value = "name", required = false) String name,
         @RequestParam(value = "loc", required = false) String loc,
-        @RequestParam(value = "mns", required = false) Integer mns,
-        @RequestParam(value = "mxs", required = false) Integer mxs,
-        @RequestParam(value = "nf", required = false) Boolean nf,
+        @RequestParam(value = "mns", required = false) String mns,
+        @RequestParam(value = "mxs", required = false) String mxs,
+        @RequestParam(value = "nf", required = false) String nf,
         @RequestParam(value = "ins", required = false) String ins
     ) {
         var all = courseRepository.findAll();
@@ -279,6 +279,8 @@ public class CourseResource {
         //        System.out.println(mnd);
         //        System.out.println(mxd);
         //        all.stream().forEach(i -> System.out.println(i.getStarttime().toLocalTime()));
+        //        System.out.println(all.get(1).getIntensity() >= 1);
+
         var res = all
             .stream()
             .filter(
@@ -289,14 +291,14 @@ public class CourseResource {
                     (mxt == null || i.getStarttime().toLocalTime().isBefore(LocalTime.parse(mxt).plusSeconds(1))) &&
                     (mndr == null || i.getDuration().getSeconds() >= Duration.parse(mndr).getSeconds()) &&
                     (mxdr == null || i.getDuration().getSeconds() <= Duration.parse(mxdr).getSeconds()) &&
-                    (mni == null || i.getIntensity() >= mni) &&
-                    (mxi == null || i.getIntensity() <= mxi) &&
+                    (mni == null || i.getIntensity() >= Integer.parseInt(mni)) &&
+                    (mxi == null || i.getIntensity() <= Integer.parseInt(mxi)) &&
                     (type == null || i.getType().toLowerCase(Locale.ROOT).contains(type.trim().toLowerCase(Locale.ROOT))) &&
                     (name == null || i.getName().toLowerCase(Locale.ROOT).contains(name.trim().toLowerCase(Locale.ROOT))) &&
                     (loc == null || i.getLocation().toLowerCase(Locale.ROOT).contains(loc.trim().toLowerCase(Locale.ROOT))) &&
-                    (mns == null || i.getMaxsize() >= mns) &&
-                    (mxs == null || i.getMaxsize() <= mxs) &&
-                    (nf == null || (i.getAttenndees() < i.getMaxsize()) && nf) &&
+                    (mns == null || i.getMaxsize() >= Integer.parseInt(mns)) &&
+                    (mxs == null || i.getMaxsize() <= Integer.parseInt(mxs)) &&
+                    (nf == null || (i.getAttenndees() < i.getMaxsize()) && (Integer.parseInt(nf) == 1)) &&
                     (ins == null || i.getInstructor().getLogin().equalsIgnoreCase(ins.trim()))
             )
             .collect(Collectors.toList());
