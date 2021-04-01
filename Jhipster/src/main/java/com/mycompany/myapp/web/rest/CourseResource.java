@@ -290,21 +290,45 @@ public class CourseResource {
             .stream()
             .filter(
                 i ->
-                    (mnd == null || i.getStarttime().toLocalDate().isAfter(LocalDate.parse(mnd).minusDays(1))) &&
-                    (mxd == null || i.getStarttime().toLocalDate().isBefore(LocalDate.parse(mxd).plusDays(1))) &&
-                    (mnt == null || i.getStarttime().toLocalTime().isAfter(LocalTime.parse(mnt).minusSeconds(1))) &&
-                    (mxt == null || i.getStarttime().toLocalTime().isBefore(LocalTime.parse(mxt).plusSeconds(1))) &&
-                    (mndr == null || i.getDuration().getSeconds() >= Duration.parse(mndr).getSeconds()) &&
-                    (mxdr == null || i.getDuration().getSeconds() <= Duration.parse(mxdr).getSeconds()) &&
-                    (mni == null || i.getIntensity() >= mni) &&
-                    (mxi == null || i.getIntensity() <= mxi) &&
-                    (type == null || i.getType().toLowerCase(Locale.ROOT).contains(type.trim().toLowerCase(Locale.ROOT))) &&
-                    (name == null || i.getName().toLowerCase(Locale.ROOT).contains(name.trim().toLowerCase(Locale.ROOT))) &&
-                    (loc == null || i.getLocation().toLowerCase(Locale.ROOT).contains(loc.trim().toLowerCase(Locale.ROOT))) &&
-                    (mns == null || i.getMaxsize() >= mns) &&
-                    (mxs == null || i.getMaxsize() <= mxs) &&
-                    (nf == null || (i.getAttenndees() < i.getMaxsize()) && (nf == 1)) &&
-                    (ins == null || i.getInstructor().getLogin().equalsIgnoreCase(ins.trim()))
+                    (
+                        mnd == null || i.getStarttime() == null || i.getStarttime().toLocalDate().isAfter(LocalDate.parse(mnd).minusDays(1))
+                    ) &&
+                    (
+                        mxd == null || i.getStarttime() == null || i.getStarttime().toLocalDate().isBefore(LocalDate.parse(mxd).plusDays(1))
+                    ) &&
+                    (
+                        mnt == null ||
+                        i.getStarttime() == null ||
+                        i.getStarttime().toLocalTime().isAfter(LocalTime.parse(mnt).minusSeconds(1))
+                    ) &&
+                    (
+                        mxt == null ||
+                        i.getStarttime() == null ||
+                        i.getStarttime().toLocalTime().isBefore(LocalTime.parse(mxt).plusSeconds(1))
+                    ) &&
+                    (mndr == null || i.getDuration() == null || i.getDuration().getSeconds() >= Duration.parse(mndr).getSeconds()) &&
+                    (mxdr == null || i.getDuration() == null || i.getDuration().getSeconds() <= Duration.parse(mxdr).getSeconds()) &&
+                    (mni == null || i.getIntensity() == null || i.getIntensity() >= mni) &&
+                    (mxi == null || i.getIntensity() == null || i.getIntensity() <= mxi) &&
+                    (
+                        type == null ||
+                        i.getType() == null ||
+                        i.getType().toLowerCase(Locale.ROOT).contains(type.trim().toLowerCase(Locale.ROOT))
+                    ) &&
+                    (
+                        name == null ||
+                        i.getName() == null ||
+                        i.getName().toLowerCase(Locale.ROOT).contains(name.trim().toLowerCase(Locale.ROOT))
+                    ) &&
+                    (
+                        loc == null ||
+                        i.getLocation() == null ||
+                        i.getLocation().toLowerCase(Locale.ROOT).contains(loc.trim().toLowerCase(Locale.ROOT))
+                    ) &&
+                    (mns == null || i.getMaxsize() == null || i.getMaxsize() >= mns) &&
+                    (mxs == null || i.getMaxsize() == null || i.getMaxsize() <= mxs) &&
+                    (nf == null || i.getAttenndees() == null || (i.getAttenndees() < i.getMaxsize()) && (nf == 1)) &&
+                    (ins == null || i.getInstructor() == null || i.getInstructor().getLogin().equalsIgnoreCase(ins.trim()))
             )
             .collect(Collectors.toList());
         return new ResponseEntity<>(res, HttpStatus.OK);
