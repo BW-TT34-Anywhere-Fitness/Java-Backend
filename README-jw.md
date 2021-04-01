@@ -7,7 +7,7 @@
 
 ### register:
 POST
-http://xnor.space/api/register
+https://xnor.space/api/register
 
 with format
 ```
@@ -20,7 +20,7 @@ the above 4 fields are required, other available fields you can supply: firstNam
 ### login:
 
 POST
-http://xnor.space/api/authenticate
+https://xnor.space/api/authenticate
 
 with format:
 ```
@@ -41,10 +41,10 @@ with format:
 
 ### get all courses:
 GET
-http://xnor.space/api/courses
+https://xnor.space/api/courses
 
 use the auth token like so:
-axios.get("http://xnor.space/api/courses", {headers: {Authorization: \`Bearer ${res.data.id_token}\`}})
+axios.get("https://xnor.space/api/courses", {headers: {Authorization: \`Bearer ${res.data.id_token}\`}})
 
 where `res` is the response of the login POST
 
@@ -54,7 +54,7 @@ where `res` is the response of the login POST
 
 GET
 
-http://xnor.space/api/courses/categories or http://xnor.space/api/courses/types
+https://xnor.space/api/courses/categories or https://xnor.space/api/courses/types
 
 
 ---
@@ -62,13 +62,13 @@ http://xnor.space/api/courses/categories or http://xnor.space/api/courses/types
 ### User getting his own info:
 
 GET
-http://xnor.space/api/account
+https://xnor.space/api/account
 
 
 ---
 
 ### instructor posting course:
-http://xnor.space/api/courses/
+https://xnor.space/api/courses/
 
 POST
 ```
@@ -86,7 +86,7 @@ POST
 
 ---
 ### instructor course update endpoint:
-http://xnor.space/api/courses/{id}
+https://xnor.space/api/courses/{id}
 
 #### Supports:
 
@@ -124,7 +124,7 @@ DELETE
 
 ---
 ### student course CRUD endpoint: 
-http://xnor.space/api/account/courses/{id}
+https://xnor.space/api/account/courses/{id}
 
 #### Supports:
 
@@ -143,14 +143,14 @@ DELETE
 
 GET
 
-http://xnor.space/api/account/courses
+https://xnor.space/api/account/courses
 
 ---
 ### instructor getting courses that they attend:
 
 GET
 
-http://xnor.space/api/account/courses/attending
+https://xnor.space/api/account/courses/attending
 
 
 ---
@@ -158,7 +158,7 @@ http://xnor.space/api/account/courses/attending
 
 POST
 
-http://xnor.space/api/account/
+https://xnor.space/api/account/
 
 
 login field is required, but you can supply anything there, since this request only modifies the logged in user, only, lastName fisrtName, email are modifiable.
@@ -179,7 +179,7 @@ samplebody
 
 POST
 
-http://xnor.space/api/account/change-password
+https://xnor.space/api/account/change-password
 
 with body
 
@@ -195,13 +195,13 @@ with body
 
 ### Search
 GET
-http://xnor.space/api/courses/search?field=term&..
+https://xnor.space/api/courses/search?field=term&..
 
 
 - all min max are containing (i.e. mindate = 2021-04-01 will return results containing courses that start on April first)
 - type, name, location are all partial matches (i.e. whether the string contains the search query term)
 - you can leave any of the search term out
-- therefore GET http://xnor.space/api/courses/search = GET http://xnor.space/api/courses/
+- therefore GET https://xnor.space/api/courses/search = GET https://xnor.space/api/courses/
 
 
 1. mnt = minimum time, format below
@@ -223,7 +223,7 @@ http://xnor.space/api/courses/search?field=term&..
 
 sample search url:
 
-http://xnor.space/api/courses/search?mnt=00:00:00&mxt=23:59:59&mnd=1970-01-01&mxd=2100-12-31&mndr=PT0.000S&mxdr=PT24H&mni=0&mxi=10000&type=lorem&name=ipsum&loc=mars&nf=1&ins=testinstructor
+https://xnor.space/api/courses/search?mnt=00:00:00&mxt=23:59:59&mnd=1970-01-01&mxd=2100-12-31&mndr=PT0.000S&mxdr=PT24H&mni=0&mxi=10000&type=lorem&name=ipsum&loc=mars&nf=1&ins=testinstructor
 
 
 
