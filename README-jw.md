@@ -123,7 +123,9 @@ DELETE
 
 
 ---
-### student course CRUD endpoint:
+
+### student course CRUD endpoint: 
+
 https://xnor.space/api/account/courses/{id}
 
 #### Supports:
@@ -210,7 +212,7 @@ https://xnor.space/api/courses/search?field=term&..
 1. mxd = maximum date
 1. mndr = min duration, format below
 1. mxdr = max duration
-1. mni = min intensity, 0-10
+1. mni = min intensity, 0-10 
 1. mxi = max intensity, 0-10
 1. type = type, string
 1. name = name, string
