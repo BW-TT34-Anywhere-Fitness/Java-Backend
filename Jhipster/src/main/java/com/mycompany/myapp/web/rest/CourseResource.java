@@ -239,6 +239,12 @@ public class CourseResource {
         return ResponseUtil.wrapOrNotFound(course);
     }
 
+    @GetMapping({ "/courses/types", "/courses/categories" })
+    public ResponseEntity<List<String>> getExistingCourseTypes() {
+        var res = courseRepository.getAllTypes().orElseThrow();
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     // name
     // class type
     // mindate
@@ -252,7 +258,7 @@ public class CourseResource {
     // location
 
     @GetMapping("/courses/search")
-    public ResponseEntity<?> searchCourse(
+    public ResponseEntity<List<Course>> searchCourse(
         @RequestParam(value = "mnt", required = false) String mnt,
         @RequestParam(value = "mxt", required = false) String mxt,
         @RequestParam(value = "mnd", required = false) String mnd,
@@ -263,7 +269,11 @@ public class CourseResource {
         @RequestParam(value = "mxi", required = false) Integer mxi,
         @RequestParam(value = "type", required = false) String type,
         @RequestParam(value = "name", required = false) String name,
-        @RequestParam(value = "loc", required = false) String loc
+        @RequestParam(value = "loc", required = false) String loc,
+        @RequestParam(value = "mns", required = false) Integer mns,
+        @RequestParam(value = "mxs", required = false) Integer mxs,
+        @RequestParam(value = "nf", required = false) Boolean nf,
+        @RequestParam(value = "ins", required = false) String ins
     ) {
         var all = courseRepository.findAll();
 
@@ -284,13 +294,13 @@ public class CourseResource {
                     (mxdr == null || i.getDuration().getSeconds() <= Duration.parse(mxdr).getSeconds()) &&
                     (mni == null || i.getIntensity() >= mni) &&
                     (mxi == null || i.getIntensity() <= mxi) &&
-                    //                (type == null || i.getType().matches("(?i).*"+type.trim()+".*")) &&
-
-                    //                (name == null || i.getName().matches("(?i).*"+name.trim()+".*")) &&
-                    //                (loc == null || i.getLocation().matches("(?i).*"+loc.trim()+".*"))
                     (type == null || i.getType().toLowerCase(Locale.ROOT).contains(type.trim().toLowerCase(Locale.ROOT))) &&
                     (name == null || i.getName().toLowerCase(Locale.ROOT).contains(name.trim().toLowerCase(Locale.ROOT))) &&
-                    (loc == null || i.getLocation().toLowerCase(Locale.ROOT).contains(loc.trim().toLowerCase(Locale.ROOT)))
+                    (loc == null || i.getLocation().toLowerCase(Locale.ROOT).contains(loc.trim().toLowerCase(Locale.ROOT))) &&
+                    (mns == null || i.getMaxsize() >= mns) &&
+                    (mxs == null || i.getMaxsize() <= mxs) &&
+                    (nf == null || (i.getAttenndees() < i.getMaxsize()) && nf) &&
+                    (ins == null || i.getInstructor().getLogin().equalsIgnoreCase(ins.trim()))
             )
             .collect(Collectors.toList());
         return new ResponseEntity<>(res, HttpStatus.OK);

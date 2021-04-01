@@ -91,12 +91,12 @@ https://xnor.space/api/courses/{id}
 #### Supports:
 
 1. Partially updating course
-PATCH
+   PATCH
 
 body example:
 
 {
-  starttime: "2100-01-01T00:00:00"
+starttime: "2100-01-01T00:00:00"
 }
 
 2. instructor full overwrite at this endpoint:
@@ -123,14 +123,16 @@ DELETE
 
 
 ---
+
 ### student course CRUD endpoint: 
+
 https://xnor.space/api/account/courses/{id}
 
 #### Supports:
 
 1. student add oneself to a course at this endpoint:
 
-POST 
+POST
 
 2. student remove oneself to a course at this endpoint:
 
