@@ -327,7 +327,13 @@ public class CourseResource {
                     ) &&
                     (mns == null || i.getMaxsize() == null || i.getMaxsize() >= mns) &&
                     (mxs == null || i.getMaxsize() == null || i.getMaxsize() <= mxs) &&
-                    (nf == null || i.getAttenndees() == null || (i.getAttenndees() < i.getMaxsize()) && (nf == 1)) &&
+                    (
+                        nf == null ||
+                        i.getAttenndees() == null ||
+                        i.getMaxsize() == null ||
+                        (i.getAttenndees() < i.getMaxsize()) &&
+                        (nf == 1)
+                    ) &&
                     (ins == null || i.getInstructor() == null || i.getInstructor().getLogin().equalsIgnoreCase(ins.trim()))
             )
             .collect(Collectors.toList());
