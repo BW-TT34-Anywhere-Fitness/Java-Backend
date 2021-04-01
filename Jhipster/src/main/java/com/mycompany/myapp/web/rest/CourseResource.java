@@ -138,18 +138,18 @@ public class CourseResource {
      * or with status {@code 500 (Internal Server Error)} if the course couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PatchMapping(value = "/courses/{id}", consumes = "application/merge-patch+json")
+    @PatchMapping(value = "/courses/{id}", consumes = { "application/merge-patch+json", "application/json" })
     public ResponseEntity<Course> partialUpdateCourse(
         @PathVariable(value = "id", required = false) final Long id,
         @RequestBody Course course
     ) throws URISyntaxException {
         log.debug("REST request to partial update Course partially : {}, {}", id, course);
-        if (course.getId() == null) {
-            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-        }
-        if (!Objects.equals(id, course.getId())) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
-        }
+        //        if (course.getId() == null) {
+        //            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        //        }
+        //        if (!Objects.equals(id, course.getId())) {
+        //            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        //        }
 
         if (!courseRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
@@ -159,12 +159,12 @@ public class CourseResource {
         if (!userextraRepository.findOneById(currentuser.getId()).orElseThrow().getAccountype().equals("instructor")) {
             throw new BadRequestAlertException("Only instructor can edit a course", ENTITY_NAME, "notinstructor");
         }
-        if (!course.getInstructor().getId().equals(currentuser.getId())) {
+        if (!courseRepository.findById(id).get().getInstructor().getId().equals(currentuser.getId())) {
             throw new BadRequestAlertException("Only owner can edit this course", ENTITY_NAME, "notowner");
         }
 
         Optional<Course> result = courseRepository
-            .findById(course.getId())
+            .findById(id)
             .map(
                 existingCourse -> {
                     if (course.getName() != null) {
@@ -197,10 +197,7 @@ public class CourseResource {
             )
             .map(courseRepository::save);
 
-        return ResponseUtil.wrapOrNotFound(
-            result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, course.getId().toString())
-        );
+        return ResponseUtil.wrapOrNotFound(result, HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, id.toString()));
     }
 
     /**

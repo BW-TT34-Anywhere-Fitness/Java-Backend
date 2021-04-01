@@ -42,7 +42,7 @@
     "clientThemeVariant": "",
     "withAdminUi": true,
     "languages": ["en", "fr"],
-    "lastLiquibaseTimestamp": 1617049625000,
-    "entities": ["Userextra", "Course"]
+    "lastLiquibaseTimestamp": 1617287042000,
+    "entities": ["Userextra", "Course", "Comment"]
   }
 }
