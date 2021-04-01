@@ -229,8 +229,57 @@ https://xnor.space/api/courses/search?mnt=00:00:00&mxt=23:59:59&mnd=1970-01-01&m
 
 
 
+---
+
+### Commenting
+
+#### Adding Comment
+
+POST
+
+https://xnor.space/api/courses/{courseid}/comments
+
+with body:
+
+```
+{ title: "commenttitle",  bodytext: "dghsdkdfhgsdfghdfsghdfksv rhkn sfd fd "}
+
+```
+
+#### Getting all comments of a course
+
+GET
+
+https://xnor.space/api/courses/{courseid}/comments
 
 
 
+#### Editing Comment
+
+PATCH
+
+https://xnor.space/api/courses/{courseid}/comments/{commentid}
+
+with body:
+
+```
+{ bodytext: "edited"}
+
+```
+
+#### Deleting Comment
+
+DELETE
+
+https://xnor.space/api/comments/{commentid}
+
+- Note that this endpoint doesnt have courses in the path
 
 
+
+#### Getting all comments
+- not sure why this might be used, but it's there
+
+GET
+
+https://xnor.space/api/comments
