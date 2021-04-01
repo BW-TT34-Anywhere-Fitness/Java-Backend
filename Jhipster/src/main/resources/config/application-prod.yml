@@ -62,7 +62,7 @@ spring:
 # Then, modify the server.ssl properties so your "server" configuration looks like:
 #
 server:
-  port: 443
+  port: 8443
   ssl:
     key-store: classpath:config/tls/pkcs.p12
     key-store-password: password
