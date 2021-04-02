@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Formula;
@@ -31,27 +32,34 @@ public class Course implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @NotNull
     @Column(name = "name")
     private String name;
 
+    @NotNull
     @Column(name = "type")
     private String type;
 
+    @NotNull
     @Column(name = "duration")
     private Duration duration;
 
+    @NotNull
     @Column(name = "intensity")
     private Integer intensity;
 
+    @NotNull
     @Column(name = "location")
     private String location;
 
     @Column(name = "attenndees")
     private Integer attenndees;
 
+    @NotNull
     @Column(name = "maxsize")
     private Integer maxsize;
 
+    @NotNull
     @Column(name = "starttime")
     private ZonedDateTime starttime;
 
